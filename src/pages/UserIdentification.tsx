@@ -44,9 +44,9 @@ export function UserIdentification() {
     try {
       await AsyncStorage.setItem('@plantmanager:user', name)
       navigation.navigate('Confirmation', {
-        title: 'Prontinho',
-        subtitle: `Agora vamos começar a cuidar das suas plantinhas com muito cuidado.`,
-        buttonTitle: 'Começar',
+        title: 'Ready!',
+        subtitle: `Now let's start taking care of your plants.`,
+        buttonTitle: 'Start',
         icon: 'smile',
         nextScreen: 'PlantSelect',
       })
@@ -67,8 +67,7 @@ export function UserIdentification() {
               <View style={styles.header}>
                 <Text style={styles.emoji}>{isFilled ? '😄' : '😃'}</Text>
                 <Text style={styles.title}>
-                  Como podemos {'\n'}
-                  chamar você?
+                  What's your name?
                 </Text>
               </View>
 
@@ -77,14 +76,14 @@ export function UserIdentification() {
                   styles.input,
                   (isFocused || isFilled) && { borderColor: colors.green },
                 ]}
-                placeholder='Digite um nome'
+                placeholder='Enter your name'
                 onBlur={handleInputBlur}
                 onFocus={handleInputFocus}
                 onChangeText={handleInputChange}
               />
 
               <View style={styles.footer}>
-                <Button title='Confirmar' onPress={handleSubmit} />
+                <Button title='Confirm' onPress={handleSubmit} />
               </View>
             </View>
           </View>

@@ -24,15 +24,14 @@ export function Welcome() {
     <SafeAreaView style={styles.container}>
       <View style={styles.wrapper}>
         <Text style={styles.title}>
-          Gerencie {'\n'}
-          suas plantas de {'\n'}
-          forma fácil
+          Manage {'\n'}
+          your plants {'\n'}
+          easily
         </Text>
         <Image source={wateringImg} style={styles.image} resizeMode='contain' />
 
         <Text style={styles.subtitle}>
-          Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
-          sempre que precisar.
+          Never forget to water your plants again! We will remind you when you need to.
         </Text>
 
         <TouchableOpacity

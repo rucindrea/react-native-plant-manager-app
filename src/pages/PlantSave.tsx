@@ -57,14 +57,23 @@ export default function PlantSave() {
       })
 
       navigation.navigate('Confirmation', {
-        title: 'Tudo certo',
-        subtitle: `Fique tranquilo que sempre vamos lembrar você de cuidar da sua plantinha com muito cuidado.`,
-        buttonTitle: 'Muito obrigado',
+        title: 'All right!',
+        subtitle: `Rest assured that we will always remind you when it's time to water your plant.`,
+        buttonTitle: 'Thanks!',
         icon: 'hug',
         nextScreen: 'MyPlants',
       })
     } catch {
-      Alert.alert('Não foi possível salvar. 😢')
+      Alert.alert('Error while saving the plant. 😢')
+    }
+  }
+
+  async function handleCancel() {
+    try {
+
+      navigation.navigate('PlantSelect')
+    } catch {
+      Alert.alert('Error while cancelling adding plant. 😢')
     }
   }
 
@@ -87,7 +96,7 @@ export default function PlantSave() {
           </View>
 
           <Text style={styles.alertLabel}>
-            Escolha o melhor horário para ser lembrado:
+            Choose the best time for notifications:
           </Text>
 
           {showDatePicker && (
@@ -105,12 +114,14 @@ export default function PlantSave() {
               onPress={handleOpenDatetimePickerForAndroid}
             >
               <Text style={styles.dateTimePickerText}>
-                {`Mudar ${format(selectedDateTime, 'HH:mm')}`}
+                {`Change ${format(selectedDateTime, 'HH:mm')}`}
               </Text>
             </TouchableOpacity>
           )}
 
-          <Button title='Cadastrar planta' onPress={handleSave} />
+          <Button title='Save plant' onPress={handleSave} />
+
+          <Button title='Cancel' onPress={handleCancel} />
         </View>
       </View>
     </ScrollView>

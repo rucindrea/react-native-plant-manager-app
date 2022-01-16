@@ -73,7 +73,7 @@ export function PlantSelect() {
     setEnvironments([
       {
         key: 'all',
-        title: 'Todos',
+        title: 'All',
       },
       ...data,
     ])
@@ -95,8 +95,8 @@ export function PlantSelect() {
       <View style={styles.header}>
         <Header />
 
-        <Text style={styles.title}>Em qual ambiente</Text>
-        <Text style={styles.subtitle}>você quer colocar a sua planta?</Text>
+        <Text style={styles.title}>In which environment</Text>
+        <Text style={styles.subtitle}>do you want to place your plant?</Text>
       </View>
 
       <View>
@@ -110,7 +110,8 @@ export function PlantSelect() {
               onPress={() => handleEnvironmentSelected(item.key)}
             />
           )}
-          horizontal
+          // horizontal
+          numColumns={4}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.environmentList}
         />
@@ -161,6 +162,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     lineHeight: 20,
     color: colors.heading,
+    marginBottom: 10
   },
   environmentList: {
     height: 40,

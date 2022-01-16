@@ -1,5 +1,5 @@
 import { formatDistance } from 'date-fns'
-import { pt } from 'date-fns/locale'
+import enUS from 'date-fns/esm/locale/en-US/index.js'
 import React, { useEffect, useState } from 'react'
 import { Alert, FlatList, Image, StyleSheet, Text, View } from 'react-native'
 import waterdrop from '../assets/waterdrop.png'
@@ -16,13 +16,13 @@ export function MyPlants() {
   const [nextWatered, setNextWatered] = useState<string>()
 
   function handleRemove(plant: PlantProps) {
-    Alert.alert('Remover', `Deseja remover a ${plant.name}?`, [
+    Alert.alert('Remove', `Do you want to remove ${plant.name}?`, [
       {
-        text: 'Não 🙏🏻',
+        text: 'No 🙏🏻',
         style: 'cancel',
       },
       {
-        text: 'Sim 😥',
+        text: 'Yes 😥',
         onPress: async () => {
           try {
             await removePlant(plant.id)
@@ -31,7 +31,7 @@ export function MyPlants() {
               oldData.filter((item) => item.id !== plant.id)
             )
           } catch (error) {
-            Alert.alert('Não foi possível remover! 😥')
+            Alert.alert('Error removing plant! 😥')
           }
         },
       },
@@ -46,12 +46,12 @@ export function MyPlants() {
         new Date(plantsStored[0].dateTimeNotification).getTime(),
         new Date().getTime(),
         {
-          locale: pt,
+          locale: enUS,
         }
       )
-      setNextWatered(`Regue sua ${plantsStored[0].name} daqui a ${nextTime}`)
+      setNextWatered(`Water your ${plantsStored[0].name} in ${nextTime}`)
     } else {
-      setNextWatered(`Ainda não existem lembretes adicionados`)
+      setNextWatered(`No reminders added yet.`)
     }
 
     setMyPlants(plantsStored)
@@ -74,7 +74,7 @@ export function MyPlants() {
       </View>
 
       <View style={styles.plants}>
-        <Text style={styles.plantsTitle}>Próximas regadas</Text>
+        <Text style={styles.plantsTitle}>Next Watering</Text>
 
         <FlatList
           data={myPlants}
